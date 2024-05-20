@@ -36,3 +36,19 @@ class NetworkManager {
         task.resume()
     }
 }
+
+enum CustomError: Error {
+    case invalidUrl
+    case fileNotFound
+    case dataInitialisation(error: Error)
+    case decoding(error: Error)
+    
+    var localizedDescription: String {
+        switch self {
+        case .invalidUrl:
+          return NSLocalizedString("Invalid URL", comment: "My error")
+        default:
+          return NSLocalizedString("Unknown Error", comment: "My error")
+        }
+      }
+}
